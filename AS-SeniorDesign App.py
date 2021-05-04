@@ -27,7 +27,6 @@ import os
 import calendar
 from datetime import datetime as dt
 
-
 import tkinter as tk
 from tkinter import*
 from tkinter import IntVar
@@ -43,7 +42,6 @@ from sklearn.metrics import confusion_matrix
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 
-#import cv2 as cv
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatch
 import matplotlib as mpl
@@ -52,11 +50,9 @@ from matplotlib.lines import Line2D
 from matplotlib.figure import Figure
 import matplotlib.ticker as ticker
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk) 
-#import tensorflow as tf
 
 import threading
 import subprocess
-#from subprocess import Popen, PIPE
 
 #Suppress Warning
 pd.options.mode.chained_assignment = None
@@ -825,7 +821,7 @@ def RunRandomForest(fname, master, seedVar, trainVar, n_jobsVar, startVar, stopV
 	#Create fiugre containing heatmap
 	figure = Figure()
 	ax = figure.subplots()
-	plot = sns.heatmap(table, ax = ax, cbar_kws={'label': 'Accuracy %'}, cmap="Greens_r")
+	plot = sns.heatmap(table, ax = ax, cbar_kws={'label': 'Accuracy %'}, cmap="Greens")
 	#plot = sns.heatmap(table, ax = ax, cbar_kws={'label': 'Accuracy %'}, cmap=sns.palplot(sns.color_palette("dark:#339900")))
 	
 	
@@ -1601,7 +1597,7 @@ class TabOne(tk.Frame):
 			
 			sel = rfChoice.get()
 			
-			if (sel == " FDI Training Set"):
+			if (sel == " Training Set"):
 				# Importing the dataset
 				dataset = pd.read_csv(E1.get())
 
@@ -1709,7 +1705,7 @@ class TabOne(tk.Frame):
 				toolbar.update()			
 				canvas.get_tk_widget().grid(row = 0, column = 0, columnspan = 2, sticky="NSEW")
 				
-			elif (sel == " FDI Test Set"):
+			elif (sel == " Test Set"):
 
 				# Importing the dataset
 				dataset = pd.read_csv('FDIdataset.csv')
@@ -2195,7 +2191,7 @@ class TabOne(tk.Frame):
 		#Random Forest Combobox
 		plotChoice2 = StringVar() 
 		rfChoice = ttk.Combobox(rfFrame2, state="readonly", justify = 'center') 
-		rfChoice['values'] = (' FDI Training Set', ' FDI Test Set') 
+		rfChoice['values'] = (' Training Set', ' Test Set') 
 		rfChoice.grid(row=0,column=0, sticky=NSEW, padx=(4,2), pady=(4,4))
 		rfChoice.current(0)		
 		
@@ -2759,7 +2755,7 @@ class TabThree(tk.Frame):
 		train_list = ttk.Combobox(optFrame2, width = 20, textvariable = trainChoice, state="readonly", justify = 'center')
 		train_list['values'] = (' 60', ' 70', ' 75',' 80') 
 		train_list.grid(row=1,column=1, columnspan = 1, sticky = "NSEW", padx = (2, 2), pady = (2, 4))
-		train_list.current(0)		
+		train_list.current(1)		
 		
 		#Number of Jobs
 		n_jobsChoice = StringVar()
@@ -2834,12 +2830,12 @@ class TabThree(tk.Frame):
 		stop_list = ttk.Combobox(paramFrame2, textvariable = stopChoice, state="readonly", justify = 'center', width = 10)
 		stop_list['values'] = temp
 		stop_list.grid(row=0,column=4, sticky = "NSEW", padx = (2, 2), pady = (4, 2))
-		stop_list.current(1)
+		stop_list.current(9)
 		
 		num_list = ttk.Combobox(paramFrame2, textvariable = numChoice, state="readonly", justify = 'center', width = 10)
 		num_list['values'] = (' 1', ' 2', ' 5',' 10',' 25') 
 		num_list.grid(row=0,column=5, sticky = "NSEW", padx = (2, 4), pady = (4, 2))
-		num_list.current(0)
+		num_list.current(3)
 		
 		#Max Features
 		# Number of features to consider at every split - #max_features = ['auto'] # auto > sqrt and log2
@@ -2906,7 +2902,7 @@ class TabThree(tk.Frame):
 		bootstrap_list = ttk.Combobox(paramFrame2, textvariable = bootstrapChoice, state="readonly", justify = 'center')
 		bootstrap_list['values'] = (' True', ' False') 
 		bootstrap_list.grid(row=6,column=3,columnspan = 3, sticky = "NSEW", padx = (4, 4), pady = (2, 4))
-		bootstrap_list.current(1) 		
+		bootstrap_list.current(0) 		
 		
 		
 		
