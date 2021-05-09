@@ -1,0 +1,16 @@
+RUN RECOMENDATION:
+Install ANACONDA --> https://www.anaconda.com/products/individual
+(contains all needed libraries)
+
+AS-SS Senior Design Application
+===============================
+- Final GUI program
+- Random Forest Classification takes a long time to run
+- Everything in the folder must be in the same directory to work perfectly
+- Requires installation of many Python Libraries
+
+Hyperparameter Optimization
+===========================
+- Non-GUI data driven program
+- Classification takes a long time to run
+- Requires installation of many Python Libraries
